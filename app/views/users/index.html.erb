@@ -1,2 +1,29 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<!-- ユーザーの詳細 -->
+<%= render 'users/info', user: @user %>
+
+<!-- ユーザーの投稿機能 -->
+<%= render 'books/new', book: @book %>
+
+<!-- ユーザーリスト -->
+<h2>Users</h2>
+<table>
+  <thead>
+    <tr>
+      <th><!--ユーザーアイコン用スペース--></th>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= image_tag user.get_profile_image(100,100) %><br>
+      </td>
+      <td><%= user.name %></td>
+      <td><%= link_to "show", user_path(user.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
