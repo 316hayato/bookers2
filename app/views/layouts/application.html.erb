@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/77a69e9882.js" crossorigin="anonymous"></script>
@@ -22,59 +22,59 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <li>
-              <%= link_to user_path(current_user.id) do %>
-                <i class="fas fa-home"></i> Home 
+              <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
+                <i class="fas fa-home"></i> Home
               <% end %>
             </li>
             <li>
-              <%= link_to users_path do %>
-                <i class="fas fa-users"></i> Users 
+              <%= link_to users_path, class:"nav-link text-light" do %>
+                <i class="fas fa-users"></i> Users
               <% end %>
             </li>
             <li>
-              <%= link_to books_path do %>
+              <%= link_to books_path, class:"nav-link text-light" do %>
                 <i class="fas fa-book-open"></i> Books
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
+              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
                 <i class="fas fa-sign-out-alt"></i> Log out
               <% end %>
             </li>
-          <% else %>
+            <% else %>
             <li>
-              <%= link_to root_path do %>
-                <i class="fas fa-home"></i> Home 
+              <%= link_to root_path, class:"nav-link text-light" do %>
+                <i class="fas fa-home"></i> Home
               <% end %>
             </li>
             <li>
-              <%= link_to about_path do %>
-                <i class="fas fa-link"></i> About  
+              <%= link_to about_path, class:"nav-link text-light" do %>
+                <i class="fas fa-link"></i> About
               <% end %>
             </li>
             <li>
-              <%= link_to new_user_registration_path do %>
-                <i class="fas fa-user-plus"></i> Sign up 
+              <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+                <i class="fas fa-user-plus"></i> Sign up
               <% end %>
             </li>
             <li>
-              <%= link_to new_user_session_path do %>
-                <i class="fas fa-sign-in-alt"></i> Log in 
+              <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                <i class="fas fa-sign-in-alt"></i> Log in
               <% end %>
             </li>
-          <% end %>
-          </ul>
+            <% end %>
+            </ul>
+          </div>
         </div>
       </nav>
-    </div>
     </header>
+    <main>
       <div class="flash-notifications">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: key) %>
         <% end %>
       </div>
-    <main>
-    <%= yield %>
+      <%= yield %>
     </main>
     <footer>
       <div class="containar mt-5">

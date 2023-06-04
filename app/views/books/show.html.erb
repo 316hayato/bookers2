@@ -1,4 +1,4 @@
-<div class='container px-5 px-sm-0'>
+<div class='container'>
   <div class='row'>
     <div class="col-md-3">
       <!-- ユーザーの詳細 -->
@@ -9,18 +9,24 @@
     <div class="offset-md-1 col-md-8">
       <!-- ユーザーの投稿内容 -->
       <h1>Book detail</h1>
-      <table>
+      <table class="table">
         <tbody>
           <tr>
             <td>
+              <%= link_to user_path(@user.id) do %>
               <%= image_tag @books.user.get_profile_image(100,100) %><br>
-              <%= link_to @books.user.name, user_path(@user.id) %>
+              <%= @books.user.name %>
+              <% end %>
             </td>
             <td><%= link_to @books.title, book_path(@books.id)%></td>
             <td><%= @books.body %></td>
             <% if @books.user == current_user %>
-            <td><%= link_to "Edit", edit_book_path(@books.id)%></br></td>
-            <td><%= link_to "Destroy", book_path(@books.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></br></td>
+            <td>
+              <%= link_to "Edit",edit_book_path(@books.id), class:"btn btn-sm btn-success" %>
+            </td>
+            <td>
+              <%= link_to "Destroy", book_path(@books.id), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            </td>
             <% end %>
           </tr>
         </tbody>
