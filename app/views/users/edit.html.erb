@@ -1,5 +1,15 @@
 <!--@user = User.find(params[:id])-->
-<h2>User info</h2><br>
+<h2>User info</h2>
+
+<% if @user.errors.any? %>
+  <h3><%= @user.errors.count %> error prohibited this obj from being saved:</h3>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @user do |f| %>
   <label for="inputName">Name</label><br>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%><br>

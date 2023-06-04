@@ -28,6 +28,9 @@
       <li><%= link_to "Log in", new_user_session_path %></li>
     <% end %>
     <div><p>↑へッター↑</p></div>
+    <div>
+      <%= flash[:success] %>
+    </div>
     </header>
     <%= yield %>
     <footer>
