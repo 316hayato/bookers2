@@ -1,4 +1,3 @@
-<!-- ユーザーの詳細 -->
 <div>
   <h2>User info</h2><br>
   <%= image_tag user.get_profile_image(100,100) %><br>
@@ -15,8 +14,16 @@
     </tbody>
   </table>
   <% if user == current_user %>
-  <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+  <li>
+    <%= link_to edit_user_path(user) do %>
+    <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+  </li>
   <% else %>
-  <p><%= link_to "プロフィール編集", user_path(current_user.id) %></p>
+  <li>
+    <%= link_to user_path(current_user.id) do %>
+    <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+  </li>
   <% end %>
 </div>
